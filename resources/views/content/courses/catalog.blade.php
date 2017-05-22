@@ -17,9 +17,12 @@
                                     <th>Duraci&oacute;n</th>
                                     <th>Fecha de Inicio</th>
                                     <th>Fecha Final</th>
-                                    <th>Semanas</th>
+                                    <th>Estado</th>
+                                    @if(!roleController::hasRole(Auth::user()->ID_USUARIO,"ESTUDIANTE"))
                                     <th>Modificar</th>
                                     <th>Eliminar</th>
+                                    <th>Ver Recursos</th>
+                                    @endif
                                  </tr>
                                 </thead>
                                 <tbody>
@@ -30,8 +33,11 @@
                                     <td value="{{ $course->ID_CURSO }}">{{$course->FECHA_INICIO}}</td>
                                     <td value="{{ $course->ID_CURSO }}">{{$course->FECHA_FIN}}</td>
                                     <td value="{{ $course->ID_CURSO }}">{{$course->ESTADO}}</td>
+                                    @if(!roleController::hasRole(Auth::user()->ID_USUARIO,"ESTUDIANTE"))
                                     <td><button  onclick="updateCourse({{ $course->ID_CURSO }})" class="fa fa-pencil" aria-hidden="true" id="modificar" title=""></button></td>
                                     <td><button  onclick="deleteCourse({{ $course->ID_CURSO }})" class="fa fa-trash-o" aria-hidden="true" id="eliminar"></button></td>
+                                    <td><button  onclick="showResources({{ $course->ID_CURSO }})" class="fa fa-eye" aria-hidden="true" id="ver"></button></td>
+                                    @endif
                                   </tr>
                                 @endforeach
 

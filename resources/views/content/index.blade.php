@@ -7,57 +7,34 @@
     <div class="col-md-8">
 
         <h1 class="page-header">
-            Page Heading
-            <small>Secondary Text</small>
+            Elearning Platform
+            <small>by AAJ</small>
         </h1>
 
-        <!-- First Blog Post -->
         <h2>
-            <a href="#">Blog Post Title</a>
+            Catalogo de Cursos
         </h2>
-        <p class="lead">
-            by <a href="index.php">Start Bootstrap</a>
-        </p>
-        <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-        <hr>
-        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-        <hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
-        <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-        <hr>
 
-        <!-- Second Blog Post -->
-        <h2>
-            <a href="#">Blog Post Title</a>
-        </h2>
-        <p class="lead">
-            by <a href="index.php">Start Bootstrap</a>
-        </p>
-        <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-        <hr>
-        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-        <hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, quasi, fugiat, asperiores harum voluptatum tenetur a possimus nesciunt quod accusamus saepe tempora ipsam distinctio minima dolorum perferendis labore impedit voluptates!</p>
-        <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+        @foreach ($courses as $course)
+            <!-- First Blog Post -->
+            <h2>
+                <a href="#">{{$course->NOMBRE}}</a>
+            </h2>
+            <p class="lead">
+                by <a href="index.php">Elearning</a>
+            </p>
+            <p><span class="glyphicon glyphicon-time"></span> Posteado en {{$course->FECHA_INICIO}}</p>
+            <p><span class="glyphicon glyphicon-time"></span> Fecha de finalizaci&oacute;n en {{$course->FECHA_FIN}}</p>
+            <hr>
+            <img class="img-responsive" src="{{$course->URL_IMAGEN}}" alt="">
+            <hr>
+            <p>{{$course->DESCRIPCION}}</p>
+            <a class="btn btn-primary" onclick="showResources({{ $course->ID_CURSO }})">Ver M&aacute;s <span class="glyphicon glyphicon-chevron-right"></span></a>
+            
+            <hr>
+        @endforeach
 
-        <hr>
-
-        <!-- Third Blog Post -->
-        <h2>
-            <a href="#">Blog Post Title</a>
-        </h2>
-        <p class="lead">
-            by <a href="index.php">Start Bootstrap</a>
-        </p>
-        <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-        <hr>
-        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-        <hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, voluptates, voluptas dolore ipsam cumque quam veniam accusantium laudantium adipisci architecto itaque dicta aperiam maiores provident id incidunt autem. Magni, ratione.</p>
-        <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-        <hr>
 
         <!-- Pager -->
         <ul class="pager">
@@ -76,7 +53,7 @@
 
         <!-- Blog Search Well -->
         <div class="well">
-            <h4>Blog Search</h4>
+            <h4>Busqueda</h4>
             <div class="input-group">
                 <input type="text" class="form-control">
                 <span class="input-group-btn">
@@ -90,31 +67,26 @@
 
         <!-- Blog Categories Well -->
         <div class="well">
-            <h4>Blog Categories</h4>
+            <h4>Categorias</h4>
             <div class="row">
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
-                        <li><a href="#">Category Name</a>
+                        <li><a href="#">Matem&aacute;tica</a>
                         </li>
-                        <li><a href="#">Category Name</a>
+
+                        <li><a href="#">Pedagog&iacute;a</a>
                         </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
+
                     </ul>
                 </div>
                 <!-- /.col-lg-6 -->
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
+                      <li><a href="#">Ingenier&iacute;a</a>
+                      </li>
+                      <li><a href="#">Ingl&eacute;s</a>
+                      </li>
+
                     </ul>
                 </div>
                 <!-- /.col-lg-6 -->
@@ -124,8 +96,8 @@
 
         <!-- Side Widget Well -->
         <div class="well">
-            <h4>Side Widget Well</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+            <h4>Acerca de Eleraning</h4>
+            <p>Somos una plataforma de aprendizaje virtual, que busca ayudar a jovenes promesas que quieran incursionar en temas de su inter&eacute;s y desarrollar sus habilidades en los mismos.</p>
         </div>
 
     </div>
