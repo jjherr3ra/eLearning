@@ -53,7 +53,7 @@
     </div>
     <div class="form-group">
       <label for="Docs">Documentos:</label>
-    <a href="{{url('docs/'.$nombreArchivo)}}" target="_blank">Ver Documento</a>
+    <a href="{{url('uploads/'.$nombreArchivo)}}" target="_blank">Ver Documento</a>
     </div>
 
 

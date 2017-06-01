@@ -143,12 +143,33 @@ function show($id_curso){
 }
   if($request->tipo !=5){
          //indicamos que queremos guardar un nuevo archivo en el disco local
-         Storage::put($file->getClientOriginalName(), $file);
+         //Storage::put($file->getClientOriginalName(), $file);
+         $destinationPath = 'uploads'; // upload path
+         //$extension = Input::file('file')->getClientOriginalExtension(); // getting image extension
+         $fileName = Input::file('file')->getClientOriginalName();//.'.'.$extension; // renameing image
+         Input::file('file')->move($destinationPath, $fileName); // uploading file to given path
+         Storage::disk('upload')->put($fileName, 'file');
+         // sending back with message
+         //Session::flash('success', 'Se adjunto correctamente!');
+         $recurso->NOMBRE_ARCHIVO = $fileName;
+         $recurso->EXTENSION_ARCHIVO = Input::file('file')->getClientOriginalExtension();
+
+         $recursos = Recurso::orderBy('ID_RECURSO')->where('ID_USUARIO',$request->id_usuario)->get();
+         //return view('content.resource.catalog',compact('recursos'));
+         $data = $request->id_curso;
+
+         $recurso->save();
+         return view('content.resource.catalog', compact('recursos','data'));
   }
 
 
+
+    $recursos = Recurso::orderBy('ID_RECURSO')->where('ID_USUARIO',$request->id_usuario)->get();
+    //return view('content.resource.catalog',compact('recursos'));
+    $data = $request->id_curso;
+
     $recurso->save();
-    return view('content.resource.catalog');
+    return view('content.resource.catalog', compact('recursos','data'));
 }
 
 
@@ -177,7 +198,7 @@ function getForUpdate($id,$idUsuario){
 $tipos = Tipo_Recurso::orderBy('ID_TIPO_RECURSO')->get();
 $recursos = Recurso::orderBy('ID_RECURSO')->where('ID_USUARIO',$idUsuario)->get();
 $recurso = Recurso::find($id);
-$nombreArchivo = $recurso->NOMBRE_ARCHIVO.'.'.$recurso->EXTENSION_ARCHIVO;
+$nombreArchivo = $recurso->NOMBRE_ARCHIVO;//.'.'.$recurso->EXTENSION_ARCHIVO;
 return view('content.resource.update', compact('recurso','tipos','recursos','nombreArchivo'));
 }
 
